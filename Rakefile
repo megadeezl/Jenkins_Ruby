@@ -2,6 +2,12 @@
 
 require 'rubygems'
 require 'bundler'
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new
+
+task :default => :spec
+task :test => :spec
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -17,7 +23,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "addressbook"
   gem.homepage = "http://github.com/megadeezl/addressbook"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
+  gem.summary = %Q{The addressbook gem will collect the names,telephone, and email address of your contacts}
   gem.description = %Q{TODO: longer description of your gem}
   gem.email = "Eric_Robinson3@cable.comcast.com"
   gem.authors = ["Eric Robinson"]
@@ -25,22 +31,6 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
-
-task :default => :test
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
