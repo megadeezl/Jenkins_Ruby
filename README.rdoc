@@ -1,6 +1,6 @@
 = addressbook
 
-Description goes here.
+Addressbook application will be used to collect contacts
 
 == Contributing to addressbook
  
